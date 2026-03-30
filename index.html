@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Presença Digital de Elite | Web Design High-End</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#050505',
+                            surface: '#0f0f11',
+                            surfaceHover: '#18181b',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            accent: '#D4AF37', // Gold/Champagne
+                            accentHover: '#F3E5AB',
+                        }
+                    },
+                    animation: {
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            'from': { backgroundPosition: '200% 0' },
+                            'to': { backgroundPosition: '-200% 0' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS para Efeitos Premium -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-white/[0.02] backdrop-blur-xl border border-brand-border rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.36)];
+            }
+            .text-gradient-gold {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-accent via-brand-accentHover to-brand-accent;
+            }
+            .text-gradient-silver {
+                @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50;
+            }
+            .reveal-hidden {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .reveal-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .delay-100 { transition-delay: 100ms; }
+            .delay-200 { transition-delay: 200ms; }
+            .delay-300 { transition-delay: 300ms; }
+        }
+
+        body {
+            background-color: theme('colors.brand.dark');
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Mesh Gradient Background Complexo */
+        .mesh-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            background: #050505;
+        }
+        .mesh-blob {
+            position: absolute;
+            filter: blur(90px);
+            opacity: 0.4;
+            border-radius: 50%;
+            animation: blob 10s infinite alternate;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: rgba(212, 175, 55, 0.15); }
+        .blob-2 { top: 40%; right: -20%; width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); animation-delay: 2s; }
+        .blob-3 { bottom: -20%; left: 20%; width: 600px; height: 600px; background: rgba(212, 175, 55, 0.1); animation-delay: 4s; }
+
+        /* Shimmer Button Effect */
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-20deg);
+            animation: shimmer 3s infinite;
+        }
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px -10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-black">
+
+    <!-- Navbar Floating -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl glass-panel rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300" id="navbar">
+        <div class="font-serif text-xl font-semibold tracking-wider text-white">
+            Gefessi<span class="text-brand-accent">.</span>
+        </div>
+        <a href="https://wa.me/5511966030329?text=Ol%C3%A1!%20Gostaria%20de%20iniciar%20um%20projeto." target="_blank" rel="noopener noreferrer" class="text-sm font-medium tracking-wide text-white/80 hover:text-white transition-colors flex items-center gap-2">
+            Iniciar Projeto <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <section class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-4 overflow-hidden">
+        <div class="mesh-bg">
+            <div class="mesh-blob blob-1"></div>
+            <div class="mesh-blob blob-2"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center reveal-hidden">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-accent/30 bg-brand-accent/5 backdrop-blur-md mb-8">
+                <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                <span class="text-xs font-semibold tracking-widest uppercase text-brand-accent">Design Exclusivo para Profissionais Liberais</span>
+            </div>
+
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.1] mb-8 tracking-tight">
+                Tenha um site profissional que <br />
+                <span class="text-gradient-silver">valoriza o seu serviço</span><br/>
+                e vende por você.
+            </h1>
+
+            <p class="font-sans text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-12 font-light">
+                Eu desenvolvo sites rápidos, atraentes e estrategicamente desenhados para que profissionais liberais parem de perder clientes por não terem uma vitrine digital à altura da sua competência.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="https://wa.me/5511966030329?text=Ol%C3%A1!%20Quero%20um%20site%20que%20vende." target="_blank" rel="noopener noreferrer" class="btn-premium w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded-full flex items-center justify-center gap-3 group">
+                    Quero um Site que Vende
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 group-hover:rotate-45 transition-transform"></i>
+                </a>
+                <a href="#o-problema" class="text-sm font-medium text-white/50 hover:text-white transition-colors uppercase tracking-widest border-b border-transparent hover:border-white pb-1">
+                    Descobrir o Método
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: O VILÃO (Bento Grid) -->
+    <section id="o-problema" class="py-32 px-4 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 reveal-hidden">
+                <h2 class="font-serif text-3xl md:text-5xl font-medium mb-6">Você já sentiu que <span class="text-brand-accent italic">perde bons negócios</span> porque a sua imagem na internet não reflete o quão bom você é no que faz?</h2>
+                <p class="text-white/50 max-w-2xl mx-auto font-light">Muitos profissionais autônomos falham não pela qualidade do serviço, mas por uma vitrine digital inadequada.</p>
+            </div>
+
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
+                
+                <!-- Card 1: Span 2 cols on Desktop -->
+                <div class="glass-panel p-10 md:col-span-2 group reveal-hidden flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+                        <i data-lucide="trending-down" class="text-brand-accent w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-2xl mb-3">A Perda para a Concorrência</h3>
+                        <p class="text-white/50 leading-relaxed font-light">É muito frustrante investir anos na sua profissão e acabar perdendo clientes para a concorrência simplesmente porque o outro profissional tem um site mais bonito e que passa mais credibilidade.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel p-10 group reveal-hidden delay-100 flex flex-col justify-between">
+                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+                        <i data-lucide="search-x" class="text-white/70 w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl mb-3">O Boca a Boca</h3>
+                        <p class="text-white/50 leading-relaxed font-light text-sm">Depender apenas do Instagram ou do boca a boca é um risco. Quando uma indicação procura o seu nome no Google, não encontra nada de profissional.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel p-10 group reveal-hidden delay-200 flex flex-col justify-between">
+                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+                        <i data-lucide="layout-template" class="text-white/70 w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl mb-3">O "Panfleto Digital"</h3>
+                        <p class="text-white/50 leading-relaxed font-light text-sm">Pior ainda é quando gastam dinheiro em um site que é apenas um "panfleto digital" feio, que ninguém entende e que não gera nenhum contato.</p>
+                    </div>
+                </div>
+
+                 <!-- Card 4: Span 2 cols -->
+                 <div class="glass-panel p-10 md:col-span-2 group reveal-hidden delay-300 relative overflow-hidden flex items-center bg-brand-surfaceHover/50">
+                    <div class="relative z-10 w-full md:w-2/3">
+                        <h3 class="font-serif text-3xl mb-4 text-brand-accent">Sua qualificação exige padrão ouro.</h3>
+                        <p class="text-white/60 font-light">A sua qualificação exige um site que transmita confiança no primeiro olhar.</p>
+                    </div>
+                    <!-- Abstract graphic idea -->
+                    <div class="absolute right-[-10%] top-[-20%] w-64 h-64 rounded-full border-[1px] border-brand-accent/20 opacity-50 blur-sm"></div>
+                    <div class="absolute right-[5%] bottom-[-20%] w-48 h-48 rounded-full border-[1px] border-white/10 opacity-30"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: O GUIA -->
+    <section class="py-32 px-4 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            
+            <div class="w-full lg:w-1/2 relative reveal-hidden">
+                <div class="absolute inset-0 bg-brand-accent/20 blur-[100px] rounded-full"></div>
+                <!-- Imagem Premium via Unsplash -->
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="Ambiente corporativo de luxo" class="relative z-10 rounded-3xl shadow-2xl border border-white/10 w-full object-cover aspect-[4/5] grayscale-[20%] hover:grayscale-0 transition-all duration-700">
+                
+                <!-- Floating Badge -->
+                <div class="absolute -bottom-6 -right-6 z-20 glass-panel p-6 animate-float">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-accent/20 flex items-center justify-center">
+                            <i data-lucide="shield-check" class="text-brand-accent w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-lg">Design & Conversão</p>
+                            <p class="text-xs text-white/50 uppercase tracking-wider">Foco em Resultados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 reveal-hidden delay-200">
+                <h2 class="font-serif text-4xl md:text-5xl font-medium mb-8 leading-tight">
+                    O seu site não precisa ser apenas bonito... <br />
+                    <span class="text-white/40">Ele precisa ser projetado para converter.</span>
+                </h2>
+                <div class="space-y-6 text-white/60 font-light text-lg">
+                    <p>Eu entendo que você não tem tempo para aprender sobre design, programação ou técnicas de persuasão. O seu foco deve estar nos seus atendimentos.</p>
+                    <p>É por isso que eu assumo essa parte técnica. Com minha bagagem em marketing e performance, eu sei exatamente o que faz uma página funcionar.</p>
+                    <p class="text-white font-medium border-l-2 border-brand-accent pl-6 py-2">
+                        O meu trabalho é unir um design visualmente impecável com a estrutura correta de conversão. Eu entrego a ferramenta pronta, estruturada para receber os seus futuros clientes e convencê-los de que você é a escolha certa.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: O PLANO -->
+    <section class="py-32 px-4 border-t border-white/5 relative">
+        <div class="mesh-bg opacity-30">
+            <div class="mesh-blob blob-3"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-24 reveal-hidden">
+                <p class="text-brand-accent tracking-widest uppercase text-xs font-bold mb-4">O Caminho Simples</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-medium">Como vamos construir o seu novo site:</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Linha conectora (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+                <!-- Step 1 -->
+                <div class="glass-panel p-10 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 reveal-hidden">
+                    <span class="absolute -right-4 -top-8 text-9xl font-serif font-bold text-white/[0.03] select-none transition-transform group-hover:scale-110">1</span>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-brand-surface border border-white/10 flex items-center justify-center mb-8 shadow-xl">
+                            <i data-lucide="coffee" class="text-white/80 w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-4">Reunião de Briefing</h3>
+                        <p class="text-white/50 font-light text-sm leading-relaxed">Um bate-papo direto ao ponto para eu entender o seu serviço, a sua identidade visual e o que o seu cliente ideal busca.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-panel p-10 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 reveal-hidden delay-100">
+                    <span class="absolute -right-4 -top-8 text-9xl font-serif font-bold text-white/[0.03] select-none transition-transform group-hover:scale-110">2</span>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-brand-surface border border-white/10 flex items-center justify-center mb-8 shadow-xl relative">
+                            <div class="absolute inset-0 rounded-full border border-brand-accent/50 animate-ping opacity-20"></div>
+                            <i data-lucide="code-2" class="text-white/80 w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-4">Desenvolvimento (Design e Textos)</h3>
+                        <p class="text-white/50 font-light text-sm leading-relaxed">Eu crio o layout do seu site, garantindo que ele seja visualmente impactante, rápido e com textos persuasivos voltados para a venda do seu serviço.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-panel p-10 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 reveal-hidden delay-200">
+                    <span class="absolute -right-4 -top-8 text-9xl font-serif font-bold text-white/[0.03] select-none transition-transform group-hover:scale-110">3</span>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-brand-accent flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                            <i data-lucide="rocket" class="text-black w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-4">Aprovação e Lançamento</h3>
+                        <p class="text-white/50 font-light text-sm leading-relaxed">Eu apresento o projeto para a sua aprovação. Assim que estiver tudo perfeito, o seu site vai ao ar, pronto para impressionar os seus clientes.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: O QUE ESTÁ EM JOGO -->
+    <section class="py-0 relative">
+        <div class="flex flex-col md:flex-row min-h-[70vh]">
+            
+            <!-- Fracasso (Dark/Reddish tint) -->
+            <div class="w-full md:w-1/2 bg-[#08080a] p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group border-r border-white/5">
+                <div class="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                <div class="relative z-10 reveal-hidden">
+                    <h3 class="font-sans text-xs uppercase tracking-[0.3em] text-white/40 mb-6">Sucesso vs. Fracasso</h3>
+                    <h2 class="font-serif text-4xl mb-6 text-white/80">O custo de parecer amador</h2>
+                    <p class="text-white/40 font-light leading-relaxed mb-8">
+                        Continuar sem um site próprio, ou com uma página desatualizada, significa afastar clientes que estão dispostos a pagar o seu preço, mas que precisam de uma prova de profissionalismo antes de fechar negócio. Sem um site focado em vendas, você continua deixando dinheiro na mesa.
+                    </p>
+                    <i data-lucide="x-circle" class="w-8 h-8 text-white/10"></i>
+                </div>
+            </div>
+
+            <!-- Sucesso (Bright/Golden tint) -->
+            <div class="w-full md:w-1/2 bg-[#0c0c0e] p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group">
+                <div class="absolute inset-0 bg-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                <div class="relative z-10 reveal-hidden delay-200">
+                    <h3 class="font-sans text-xs uppercase tracking-[0.3em] text-brand-accent mb-6">O Que Está em Jogo</h3>
+                    <h2 class="font-serif text-4xl mb-6 text-white">A sua nova realidade</h2>
+                    <p class="text-white/70 font-light leading-relaxed mb-8">
+                        Imagine o orgulho de enviar o link do seu site para um possível cliente, sabendo que a página transmite exatamente a qualidade do seu serviço. Imagine ter uma estrutura que trabalha por você 24 horas por dia, com um design de alto nível que facilita o contato e valoriza o seu nome no mercado.
+                    </p>
+                    <i data-lucide="check-circle-2" class="w-8 h-8 text-brand-accent"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 6: FAQ & CTA FINAL -->
+    <section class="py-32 px-4" id="contato">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- FAQ -->
+            <div class="mb-32 reveal-hidden">
+                <h2 class="font-serif text-3xl font-medium mb-12 text-center">Dúvidas Frequentes</h2>
+                
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="glass-panel overflow-hidden transition-all duration-300">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-toggle">
+                            <span class="font-medium text-lg">O site vai funcionar bem no celular?</span>
+                            <i data-lucide="plus" class="w-5 h-5 text-brand-accent transition-transform duration-300 faq-icon"></i>
+                        </button>
+                        <div class="px-8 pb-6 text-white/50 font-light hidden faq-content">
+                            Sim. Todos os sites que desenvolvo são totalmente responsivos, o que significa que eles se adaptam perfeitamente e carregam rápido em qualquer tamanho de tela, seja no celular, tablet ou computador.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="glass-panel overflow-hidden transition-all duration-300">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-toggle">
+                            <span class="font-medium text-lg">Eu preciso fornecer os textos?</span>
+                            <i data-lucide="plus" class="w-5 h-5 text-brand-accent transition-transform duration-300 faq-icon"></i>
+                        </button>
+                        <div class="px-8 pb-6 text-white/50 font-light hidden faq-content">
+                            Eu posso utilizar os textos que você já tem, mas também aplico técnicas de copywriting no conteúdo para garantir que a mensagem esteja focada em converter o visitante em cliente.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="glass-panel overflow-hidden transition-all duration-300">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-toggle">
+                            <span class="font-medium text-lg">Você faz a gestão de anúncios ou redes sociais depois do site pronto?</span>
+                            <i data-lucide="plus" class="w-5 h-5 text-brand-accent transition-transform duration-300 faq-icon"></i>
+                        </button>
+                        <div class="px-8 pb-6 text-white/50 font-light hidden faq-content">
+                            Meu escopo principal é entregar um site de alta performance, bonito e pronto para vender. Eu entrego a máquina montada e otimizada para receber tráfego, para que você ou a sua equipe de tráfego possam rodar campanhas com segurança e alto índice de conversão.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big CTA -->
+            <div class="glass-panel p-12 md:p-20 text-center relative overflow-hidden reveal-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0%,transparent_70%)]"></div>
+                
+                <h2 class="font-serif text-3xl md:text-5xl font-medium mb-6 relative z-10">Chegou a hora de ter um site que faz justiça ao tamanho da sua competência e ajuda a <span class="text-brand-accent italic">fechar mais contratos.</span></h2>
+                <p class="text-white/60 font-light text-lg mb-12 max-w-2xl mx-auto relative z-10">Não deixe dinheiro na mesa com um design que não reflete a sua verdadeira autoridade e profissionalismo.</p>
+                
+                <a href="https://wa.me/5511966030329?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20o%20or%C3%A7amento%20do%20meu%20site." target="_blank" rel="noopener noreferrer" class="btn-premium relative z-10 w-full sm:w-auto px-10 py-5 bg-white text-black text-lg font-semibold rounded-full inline-flex items-center justify-center gap-3 group shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)]">
+                    Solicitar o Orçamento do Meu Site
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <p class="text-xs text-white/30 uppercase tracking-widest mt-6 relative z-10">Resposta em até 24 horas úteis</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center">
+        <div class="font-serif text-2xl font-semibold tracking-wider text-white mb-4">
+            Gefessi<span class="text-brand-accent">.</span>
+        </div>
+        <p class="text-white/40 text-sm font-light">© 2026 Gefessi. Arquitetura de Conversão para a Elite.<br/>Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Lógica do FAQ (Accordion)
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                
+                // Fecha outros abertos (opcional)
+                document.querySelectorAll('.faq-content').forEach(c => {
+                    if (c !== content && !c.classList.contains('hidden')) {
+                        c.classList.add('hidden');
+                        c.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-45');
+                    }
+                });
+
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-45');
+            });
+        });
+
+        // Scroll Reveal Animation com Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                    // Opcional: parar de observar após revelar
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-hidden').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Efeito Navbar Glassmorphism on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-3', 'bg-white/[0.05]');
+                navbar.classList.remove('py-4', 'bg-transparent');
+            } else {
+                navbar.classList.add('py-4', 'bg-transparent');
+                navbar.classList.remove('py-3', 'bg-white/[0.05]');
+            }
+        });
+    </script>
+</body>
+</html>
