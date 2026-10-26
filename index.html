@@ -218,6 +218,38 @@
         </div>
     </section>
 
+    <!-- 3.5 FINALIDADE DO SERVIÇO (exigida na verificação do Google) -->
+    <section id="sobre" class="py-24 px-6 border-t border-borderSubtle bg-base">
+        <div class="max-w-4xl mx-auto reveal">
+            <h2 class="font-display text-3xl md:text-4xl font-semibold text-textWhite mb-6 tracking-tight">Para que serve esta plataforma</h2>
+
+            <div class="space-y-5 text-textMuted text-lg font-light leading-relaxed">
+                <p>
+                    A ALEX.IA é um serviço de gestão de tráfego pago e engenharia de dados. Planejamos, criamos e otimizamos
+                    campanhas de anúncios para empresas e entregamos relatórios gerenciais sobre o desempenho dessas campanhas.
+                </p>
+                <p>
+                    Para isso, usamos uma ferramenta interna que se conecta à conta de Google Ads do próprio cliente, sempre
+                    com autorização expressa dele. Essa conexão serve para ler as métricas da conta, montar os relatórios e
+                    aplicar as otimizações combinadas na própria conta do cliente.
+                </p>
+                <p class="text-textWhite">
+                    Os dados obtidos das contas de Google Ads são usados unicamente para a prestação deste serviço e para os
+                    relatórios entregues ao dono da conta. Eles não são comercializados, vendidos nem compartilhados com terceiros.
+                </p>
+            </div>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                <a href="/privacidade" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-borderSubtle text-sm font-medium text-textWhite hover:bg-surface transition-colors">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i> Política de Privacidade
+                </a>
+                <a href="/termos" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-borderSubtle text-sm font-medium text-textWhite hover:bg-surface transition-colors">
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Termos de Serviço
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- 4. CTA MINIMALISTA -->
     <section id="contato" class="py-32 px-6 border-t border-borderSubtle bg-surface relative overflow-hidden">
         <!-- Efeito sutil de background radial -->
@@ -238,20 +270,25 @@
 
     <!-- 5. FOOTER CORPORATIVO -->
     <footer class="border-t border-borderSubtle bg-base py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div class="flex items-center gap-2">
                 <i data-lucide="triangle" class="w-5 h-5 text-white fill-white"></i>
                 <span class="font-display font-semibold text-lg tracking-tight text-white">ALEX.IA</span>
             </div>
-            
-            <div class="text-sm text-textMuted font-light">
-                &copy; 2026 Alex Gestão & Dados. Todos os direitos reservados.
-            </div>
-            
-            <div class="flex items-center gap-6 text-textMuted">
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
-            </div>
+
+            <nav class="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-light">
+                <a href="/" class="text-textMuted hover:text-white transition-colors">Início</a>
+                <a href="/privacidade" class="text-textMuted hover:text-white transition-colors">Política de Privacidade</a>
+                <a href="/termos" class="text-textMuted hover:text-white transition-colors">Termos de Serviço</a>
+            </nav>
+
+            <a href="mailto:SEU-EMAIL@EXEMPLO.COM.BR" class="inline-flex items-center gap-2 text-sm font-light text-textMuted hover:text-white transition-colors">
+                <i data-lucide="mail" class="w-4 h-4"></i> SEU-EMAIL@EXEMPLO.COM.BR
+            </a>
+        </div>
+
+        <div class="max-w-7xl mx-auto mt-8 pt-8 border-t border-borderSubtle text-sm text-textMuted font-light">
+            &copy; 2026 Alex Gestão &amp; Dados. Todos os direitos reservados.
         </div>
     </footer>
 
