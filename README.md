@@ -3,7 +3,7 @@
 Três páginas estáticas preparadas para o Passo 2 da verificação do Google Ads API.
 Atualizado em 26 de outubro de 2026.
 
-**Próxima ação:** trocar o e-mail de contato nas três páginas (ele está marcado em amarelo na tela).
+**Próxima ação:** conferir se os três endereços abrem sem erro 404 no domínio publicado.
 
 ## O que tem aqui
 
@@ -12,23 +12,16 @@ Atualizado em 26 de outubro de 2026.
 - `termos.html` · vira `/termos` quando publicado
 - `vercel.json` · é o que faz `/privacidade` funcionar sem o `.html` no fim
 
-## Antes de publicar
+## Contato nas páginas
 
-Procure por `SEU-EMAIL@EXEMPLO.COM.BR` nos três arquivos HTML e troque pelo seu e-mail de contato.
-Aparece 10 vezes no total, e no texto das páginas legais fica destacado em amarelo na tela,
-justamente para você não publicar sem trocar.
+O e-mail de contato que aparece no rodapé e nas páginas legais é `pedrofguedes.contato@gmail.com`.
+Para trocar, procure por ele nos três arquivos HTML e substitua.
 
 ## Como publicar
 
-O jeito mais simples, já que o código está aqui no GitHub:
-
-- Entre em vercel.com e clique em Add New, depois Project
-- Escolha importar este repositório (`gfspedro/gefessi`)
-- Deixe tudo no padrão e clique em Deploy
-- Aponte o seu domínio para o projeto nas configurações do projeto na Vercel
-
-A partir daí, todo commit enviado para a branch `main` publica sozinho.
-O HTTPS a Vercel liga por conta própria, então o SSL que o Google exige já vem resolvido.
+O projeto está ligado à Vercel pelo GitHub, então todo commit enviado para a branch `main`
+publica sozinho. O HTTPS a Vercel liga por conta própria, então o SSL que o Google exige
+já vem resolvido.
 
 ## Depois de publicar, teste os três links
 
